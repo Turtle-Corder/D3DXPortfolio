@@ -5,6 +5,7 @@
 #include "Base.h"
 
 BEGIN(Engine)
+
 class CLog;
 class CDevice_Manager final : public CBase
 {
@@ -28,7 +29,7 @@ public:
 	LPD3DXFONT			Get_Font()		const;
 	LPD3DXSPRITE		Get_Sprite()	const;
 
-	HRESULT Setup_GraphicDevice(HWND _hWnd, _uint _iWinCX, _uint _iWinCY, DISPLAY_MODE _eDisplayMode);
+	HRESULT Setup_GraphicDevice(HWND hWnd, _uint iWinCX, _uint iWinCY, DISPLAY_MODE eDisplayMode);
 
 	virtual void Free() override;
 	

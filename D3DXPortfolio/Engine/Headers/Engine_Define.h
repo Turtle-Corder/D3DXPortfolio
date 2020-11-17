@@ -130,8 +130,9 @@ _int ClassName::Destroy_Instance()						\
 namespace RETURNCODE
 {
 	const int RETCODE_ERR		= -1;
-
-	const int RETCODE_RELEASE	= 1;
+	const int RETCODE_NONE		= 0;
+	const int RETCODE_TRAVEL	= 1;
+	const int RETCODE_RELEASE	= 9;
 	const int RETCODE_EXIT		= 9798;
 }
 

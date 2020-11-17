@@ -19,6 +19,42 @@
     <Filter Include="99.Headers">
       <UniqueIdentifier>{25fe7b18-2f97-428c-b0f0-d571d7c5d288}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Utillity\00.Management">
+      <UniqueIdentifier>{5b6bba87-923a-4205-96be-63afb0b6e74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\02.Timer">
+      <UniqueIdentifier>{0d6d5efb-709d-45dc-8806-123e95868cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\02.Timer\00.Timer">
+      <UniqueIdentifier>{0afe9169-4b49-4ccd-9a45-23c0ecb291d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\02.Timer\99.Manager">
+      <UniqueIdentifier>{68bec4e0-4c57-4eb2-8e41-9d2330769671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\03.Renderer">
+      <UniqueIdentifier>{577b6bd8-82d2-46ee-b84b-2c3ed463cb36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\04.Scene">
+      <UniqueIdentifier>{c2be65a9-1417-4d47-91e4-ef8ed36fb4d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\05.GameObject">
+      <UniqueIdentifier>{0077e1f5-836d-42bd-93a5-cf1dab46943d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\05.GameObject\00.BaseObject">
+      <UniqueIdentifier>{4bcfb24a-0f4a-4323-b86f-3b5f1004720d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\06.Component">
+      <UniqueIdentifier>{62cfd674-7273-4f3c-85c7-158a3cd66571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\06.Component\00.BaseComponent">
+      <UniqueIdentifier>{56a06c84-927d-4ab6-9be6-8e0c32e3f994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\01.Frame">
+      <UniqueIdentifier>{8895a657-ec91-4bbb-8d0e-e41bdfeeb28a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\01.Frame\99.Manager">
+      <UniqueIdentifier>{d29ed835-1807-451b-9890-70cae8b96831}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Headers\Device_Manager.h">
@@ -45,6 +81,27 @@
     <ClInclude Include="..\Headers\Log.h">
       <Filter>00.Log</Filter>
     </ClInclude>
+    <ClInclude Include="..\Headers\Management.h">
+      <Filter>02.Utillity\00.Management</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Timer.h">
+      <Filter>02.Utillity\02.Timer\00.Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Timer_Manager.h">
+      <Filter>02.Utillity\02.Timer\99.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Renderer.h">
+      <Filter>02.Utillity\03.Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\GameObject.h">
+      <Filter>02.Utillity\05.GameObject\00.BaseObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Component.h">
+      <Filter>02.Utillity\06.Component\00.BaseComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Frame_Manager.h">
+      <Filter>02.Utillity\01.Frame\99.Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Codes\Device_Manager.cpp">
@@ -55,6 +112,27 @@
     </ClCompile>
     <ClCompile Include="..\Codes\Log.cpp">
       <Filter>00.Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Management.cpp">
+      <Filter>02.Utillity\00.Management</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Timer.cpp">
+      <Filter>02.Utillity\02.Timer\00.Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Timer_Manager.cpp">
+      <Filter>02.Utillity\02.Timer\99.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Renderer.cpp">
+      <Filter>02.Utillity\03.Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\GameObject.cpp">
+      <Filter>02.Utillity\05.GameObject\00.BaseObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Component.cpp">
+      <Filter>02.Utillity\06.Component\00.BaseComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Frame_Manager.cpp">
+      <Filter>02.Utillity\01.Frame\99.Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
