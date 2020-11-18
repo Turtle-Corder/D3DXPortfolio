@@ -9,28 +9,15 @@ BEGIN(Engine)
 class CGameObject;
 class CRenderer final : public CBase
 {
-public:
-	enum enRENDER_TYPE
-	{
-		RENDER_PRIORITY,
-		RENDER_NONEALPHA,
-		RENDER_BLNEDALPHA,
-		RENDER_ONLYCOLOR,
-		RENDER_EFFECT,
-		RENDER_UI,
-		RENDER_MOUSE,
-		RENDER_END,
-	};
-
 
 private:
-	explicit CRenderer(LPDIRECT3DDEVICE9 pDevice, LPD3DXSPRITE pSprite, LPD3DXFONT pFont, HWND hWnd);
+	explicit CRenderer();
 	virtual ~CRenderer() = default;
 
 
 public:
 	HRESULT Setup_Renderer();
-	HRESULT Add_RendererList(CRenderer::enRENDER_TYPE eType, CGameObject* pObject);
+	HRESULT Add_RenderGroup(RENDERID eType, CGameObject* pObject);
 	HRESULT Render_Renderer();
 
 
@@ -41,10 +28,11 @@ private:
 	HRESULT Render_OnlyColor();
 	HRESULT Render_Effect();
 	HRESULT Render_UI();
+	HRESULT Render_Mouse();
 
 
 public:
-	static CRenderer* Create(LPDIRECT3DDEVICE9 pDevice, LPD3DXSPRITE pSprite, LPD3DXFONT pFont, HWND hWnd = nullptr);
+	static CRenderer* Create();
 	virtual void Free() override;
 
 
@@ -52,15 +40,10 @@ public:
 
 
 private:
-	typedef list<CGameObject*> GAMEOBJECTS;
-	GAMEOBJECTS m_GameObjects[RENDER_END];
-
-	HWND m_hWnd = nullptr;
+	typedef list<CGameObject*> RENDERGROUPS;
+	RENDERGROUPS m_RenderGroups[RENDER_END];
 
 	LPDIRECT3DDEVICE9	m_pDevice	= nullptr;
-	LPD3DXSPRITE		m_pSprite	= nullptr;
-	LPD3DXFONT			m_pFont		= nullptr;
-
 };
 
 END

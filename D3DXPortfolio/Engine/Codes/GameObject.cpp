@@ -20,8 +20,8 @@ void CGameObject::Free()
 {
 	for (_uint iCnt = 0; iCnt < ID_END; ++iCnt)
 	{
-		for_each(m_Components[iCnt].begin(), m_Components[iCnt].end(), CDeleteMap());
-		m_Components[iCnt].clear();
+		for_each(m_mapComponents[iCnt].begin(), m_mapComponents[iCnt].end(), CDeleteMap());
+		m_mapComponents[iCnt].clear();
 	}
 
 	Safe_Release(m_pDevice);
@@ -31,38 +31,13 @@ void CGameObject::Free()
 //----------------------------------------------------------------------------------------------------
 // Component
 //----------------------------------------------------------------------------------------------------
-HRESULT CGameObject::Add_Component(_int iSceneID, const wstring & strPrototypeTag, const wstring & strComponentTag, CComponent ** ppComponent, void * pArg)
+CComponent * CGameObject::Find_Component(const _tchar* pComponentTag, COMPONENTID eID)
 {
-	auto iter_find = m_Components.find(strComponentTag);
-	if (m_Components.end() != iter_find)
-		return E_FAIL;
-
-	CManagement* pManagement = CManagement::Get_Instance();
-	if (nullptr == pManagement)
-		return E_FAIL;
-
-	CComponent* pClone = pManagement->Clone_Component(iSceneID, strPrototypeTag, pArg);
-	if (nullptr == pClone)
-		return E_FAIL;
-
-	m_Components.emplace(strComponentTag, pClone);
-	if (nullptr != ppComponent)
-	{
-		*ppComponent = pClone;
-		Safe_AddRef(pClone);
-	}
-
-	return S_OK;
-}
-
-
-CComponent * CGameObject::Get_Component(const wstring & strComponentTag)
-{
-	auto iter_find = m_Components.find(strComponentTag);
-	if (iter_find == m_Components.end())
+	auto iter = find_if(m_mapComponents[eID].begin(), m_mapComponents[eID].end(), CTagFinder(pComponentTag));
+	if (iter == m_mapComponents[eID].end())
 		return nullptr;
 
-	return iter_find->second;
+	return iter->second;
 }
 
 

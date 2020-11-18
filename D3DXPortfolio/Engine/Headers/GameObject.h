@@ -14,12 +14,9 @@ protected:
 	explicit CGameObject(const CGameObject& rhs);
 	virtual ~CGameObject() = default;
 
-	
-protected:
-	HRESULT		Add_Component(_int iSceneID, const wstring& strPrototypeTag, const wstring& strComponentTag, CComponent** ppComponent = nullptr, void* pArg = nullptr);
 
 public:
-	CComponent*	Get_Component(const wstring& strComponentTag);
+	CComponent*	Find_Component(const _tchar* pComponentTag, COMPONENTID eID);
 
 
 public:
@@ -32,8 +29,8 @@ public:
 
 	virtual HRESULT Setup_GameObject_Prototype() = 0;
 	virtual HRESULT Setup_GameObject(void* _pArg) = 0;
-	virtual _int Update_GameObject(_float _fDeltaTime) = 0;
-	virtual _int LateUpdate_GameObject(_float _fDeltaTime) = 0;
+	virtual _int Update_GameObject(_double _dDeltaTime) = 0;
+	virtual _int LateUpdate_GameObject(_double _dDeltaTime) = 0;
 
 	virtual HRESULT Render_Priority();
 	virtual HRESULT Render_NoneAlpha();
@@ -55,7 +52,7 @@ public:
 
 protected:
 	typedef unordered_map<const _tchar*, CComponent*> COMPONENTS;
-	COMPONENTS m_Components[ID_END];
+	COMPONENTS m_mapComponents[ID_END];
 
 	LPDIRECT3DDEVICE9 m_pDevice = nullptr;
 	_bool m_bActive = false;

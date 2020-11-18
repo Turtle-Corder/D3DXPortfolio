@@ -10,29 +10,14 @@
     <Filter Include="02.Utillity">
       <UniqueIdentifier>{b7c15d56-5836-4150-a0ee-15cd2bb8bfd0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.System\01.Device_Manager">
-      <UniqueIdentifier>{e5dfa7a0-95e0-4cc9-9801-99ad4191838b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="99.Headers">
       <UniqueIdentifier>{25fe7b18-2f97-428c-b0f0-d571d7c5d288}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.Utillity\00.Management">
       <UniqueIdentifier>{5b6bba87-923a-4205-96be-63afb0b6e74d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Utillity\02.Timer">
-      <UniqueIdentifier>{0d6d5efb-709d-45dc-8806-123e95868cc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Utillity\02.Timer\00.Timer">
-      <UniqueIdentifier>{0afe9169-4b49-4ccd-9a45-23c0ecb291d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Utillity\02.Timer\99.Manager">
-      <UniqueIdentifier>{68bec4e0-4c57-4eb2-8e41-9d2330769671}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Utillity\03.Renderer">
       <UniqueIdentifier>{577b6bd8-82d2-46ee-b84b-2c3ed463cb36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Utillity\04.Scene">
-      <UniqueIdentifier>{c2be65a9-1417-4d47-91e4-ef8ed36fb4d6}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.Utillity\05.GameObject">
       <UniqueIdentifier>{0077e1f5-836d-42bd-93a5-cf1dab46943d}</UniqueIdentifier>
@@ -46,19 +31,52 @@
     <Filter Include="02.Utillity\06.Component\00.BaseComponent">
       <UniqueIdentifier>{56a06c84-927d-4ab6-9be6-8e0c32e3f994}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Utillity\01.Frame">
+    <Filter Include="01.System\01.Frame">
       <UniqueIdentifier>{8895a657-ec91-4bbb-8d0e-e41bdfeeb28a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Utillity\01.Frame\99.Manager">
+    <Filter Include="01.System\01.Frame\99.Manager">
       <UniqueIdentifier>{d29ed835-1807-451b-9890-70cae8b96831}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Utillity\01.Frame\00.Frame">
+    <Filter Include="01.System\01.Frame\00.Frame">
       <UniqueIdentifier>{86eb5c88-59e7-4fbc-a9a7-24fde25d0363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\02.Timer">
+      <UniqueIdentifier>{0d6d5efb-709d-45dc-8806-123e95868cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\02.Timer\00.Timer">
+      <UniqueIdentifier>{0afe9169-4b49-4ccd-9a45-23c0ecb291d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\02.Timer\99.Manager">
+      <UniqueIdentifier>{68bec4e0-4c57-4eb2-8e41-9d2330769671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\00.Device_Manager">
+      <UniqueIdentifier>{e5dfa7a0-95e0-4cc9-9801-99ad4191838b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\03.Font">
+      <UniqueIdentifier>{5b528b7b-25cc-472d-9e29-24e387e2be38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\03.Font\00.Font">
+      <UniqueIdentifier>{71104e61-2c86-4c17-9bb6-8a94189f9e15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.System\03.Font\99.Manager">
+      <UniqueIdentifier>{76aa486e-0d28-402e-922c-334a5b6a6231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\01.Scene">
+      <UniqueIdentifier>{c2be65a9-1417-4d47-91e4-ef8ed36fb4d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\01.Scene\00.Scene">
+      <UniqueIdentifier>{5d07e6ac-63fa-4bc3-8c0d-152228c17ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\01.Scene\99.Manager">
+      <UniqueIdentifier>{a0a7f176-3bef-4012-bdd3-ce2d45077a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Utillity\02.Layer">
+      <UniqueIdentifier>{ce842f0e-a308-4664-9640-5c00e964221d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Headers\Device_Manager.h">
-      <Filter>01.System\01.Device_Manager</Filter>
+      <Filter>01.System\00.Device_Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Base.h">
       <Filter>98.Base</Filter>
@@ -79,10 +97,10 @@
       <Filter>02.Utillity\00.Management</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Timer.h">
-      <Filter>02.Utillity\02.Timer\00.Timer</Filter>
+      <Filter>01.System\02.Timer\00.Timer</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Timer_Manager.h">
-      <Filter>02.Utillity\02.Timer\99.Manager</Filter>
+      <Filter>01.System\02.Timer\99.Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Renderer.h">
       <Filter>02.Utillity\03.Renderer</Filter>
@@ -94,7 +112,7 @@
       <Filter>02.Utillity\06.Component\00.BaseComponent</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Frame_Manager.h">
-      <Filter>02.Utillity\01.Frame\99.Manager</Filter>
+      <Filter>01.System\01.Frame\99.Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Engine_Macro.h">
       <Filter>99.Headers</Filter>
@@ -103,21 +121,36 @@
       <Filter>99.Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Frame.h">
-      <Filter>02.Utillity\01.Frame\00.Frame</Filter>
+      <Filter>01.System\01.Frame\00.Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\DFont.h">
+      <Filter>01.System\03.Font\00.Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Font_Manager.h">
+      <Filter>01.System\03.Font\99.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Scene.h">
+      <Filter>02.Utillity\01.Scene\00.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Scene_Manager.h">
+      <Filter>02.Utillity\01.Scene\99.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Layer.h">
+      <Filter>02.Utillity\02.Layer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Codes\Device_Manager.cpp">
-      <Filter>01.System\01.Device_Manager</Filter>
+      <Filter>01.System\00.Device_Manager</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Management.cpp">
       <Filter>02.Utillity\00.Management</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Timer.cpp">
-      <Filter>02.Utillity\02.Timer\00.Timer</Filter>
+      <Filter>01.System\02.Timer\00.Timer</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Timer_Manager.cpp">
-      <Filter>02.Utillity\02.Timer\99.Manager</Filter>
+      <Filter>01.System\02.Timer\99.Manager</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Renderer.cpp">
       <Filter>02.Utillity\03.Renderer</Filter>
@@ -129,13 +162,28 @@
       <Filter>02.Utillity\06.Component\00.BaseComponent</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Frame_Manager.cpp">
-      <Filter>02.Utillity\01.Frame\99.Manager</Filter>
+      <Filter>01.System\01.Frame\99.Manager</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Base.cpp">
       <Filter>98.Base</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Frame.cpp">
-      <Filter>02.Utillity\01.Frame\00.Frame</Filter>
+      <Filter>01.System\01.Frame\00.Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\DFont.cpp">
+      <Filter>01.System\03.Font\00.Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Font_Manager.cpp">
+      <Filter>01.System\03.Font\99.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Scene.cpp">
+      <Filter>02.Utillity\01.Scene\00.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Scene_Manager.cpp">
+      <Filter>02.Utillity\01.Scene\99.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Layer.cpp">
+      <Filter>02.Utillity\02.Layer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -37,7 +37,7 @@ public:
 
 private:
 	typedef unordered_map<const _tchar*, CTimer*> TIMERS;
-	TIMERS m_Timers;
+	TIMERS m_mapTimers;
 };
 
 END

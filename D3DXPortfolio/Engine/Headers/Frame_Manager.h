@@ -6,6 +6,7 @@
 
 BEGIN(Engine)
 
+class CFrame;
 class CFrame_Manager final : public CBase
 {
 	DECLARE_SINGLETON(CFrame_Manager)
@@ -15,34 +16,31 @@ private:
 	virtual ~CFrame_Manager() = default;
 
 public:
-	HRESULT Setup_FrameManager(HWND _hWnd, _uint _iFramePerSec);
+	HRESULT Setup_FrameManager(HWND hWnd);
 
-	_bool Lock_FrameManager();
+	HRESULT Add_Frame(const _tchar* pFrameTag, const _double& dFramePerSecond);
+	_bool Update_Frame(const _tchar* pFrameTag, const _double& dDeltaTime);
 
-	void Render_FrameManager();
+	//void Render_FrameManager();
+
+
+private:
+	CFrame* Find_Frame(const _tchar* pFrameTag);
+
 
 public:
 	virtual void Free() override;
 
 
 
+
+
 private:
-	LARGE_INTEGER m_Frequency;
-	LARGE_INTEGER m_PrevTime;
-	LARGE_INTEGER m_CurrTime;
-
-	// 1회 update 하기 위해 필요한 딜레이 시간
-	double m_dSecondPerFrame;
-
-	// 이전 업데이트 성공과 현재 업데이트 성공 사이의 시간
-	double m_dDeltaTime;
-
-	// 1회 update 하기 위해 흐른 시간을 누적
-	double m_dElapseTime;
-
+	typedef unordered_map<const _tchar*, CFrame*> FRAMES;
+	FRAMES m_mapFrames;
 
 	//--------------------------------------------------
-	// 출력용
+	// 출력용 / 디버깅용으로 남겨두자
 	//--------------------------------------------------
 	HWND	m_hWnd = NULL;
 	int		m_iFPS;
@@ -50,7 +48,6 @@ private:
 
 	// 1초를 확인 하기 위한 변수
 	double m_dSecElapseTime;
-
 };
 
 END

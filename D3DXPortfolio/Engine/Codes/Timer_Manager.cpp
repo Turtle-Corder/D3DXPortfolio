@@ -26,7 +26,7 @@ HRESULT CTimer_Manager::Add_Timer(const _tchar * pTimerTag)
 	pInstance = CTimer::Create();
 	NULL_CHECK_RETURN(pInstance, E_FAIL);
 
-	m_Timers.emplace(pTimerTag, pInstance);
+	m_mapTimers.emplace(pTimerTag, pInstance);
 	return S_OK;
 }
 
@@ -54,8 +54,8 @@ _double CTimer_Manager::Get_DeltaTime(const _tchar * pTimerTag)
 
 CTimer * CTimer_Manager::Find_Timer(const _tchar * pTimerTag)
 {
-	auto iter = find_if(m_Timers.begin(), m_Timers.end(), CTagFinder(pTimerTag));
-	if (iter == m_Timers.end())
+	auto iter = find_if(m_mapTimers.begin(), m_mapTimers.end(), CTagFinder(pTimerTag));
+	if (iter == m_mapTimers.end())
 		return nullptr;
 
 	return iter->second;
@@ -65,6 +65,6 @@ CTimer * CTimer_Manager::Find_Timer(const _tchar * pTimerTag)
 
 void CTimer_Manager::Free()
 {
-	for_each(m_Timers.begin(), m_Timers.end(), CDeleteMap());
-	m_Timers.clear();
+	for_each(m_mapTimers.begin(), m_mapTimers.end(), CDeleteMap());
+	m_mapTimers.clear();
 }

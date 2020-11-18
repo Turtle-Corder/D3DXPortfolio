@@ -33,6 +33,11 @@
 //----------------------------------------------------------------------------------------------------
 // Validate Check
 //----------------------------------------------------------------------------------------------------
+#ifndef MSG_BOX
+#define	MSG_BOX(_message)			MessageBox(NULL, TEXT(_message), L"System Message", MB_OK)
+#endif
+
+
 #define NULL_CHECK( _ptr)	\
 {if( _ptr == 0){__asm { int 3 };return;}}
 
