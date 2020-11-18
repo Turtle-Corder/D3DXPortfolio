@@ -18,13 +18,14 @@ private:
 
 public:
 	HRESULT Setup_TimerManager();
-	_int	Update_TimeManager();
 
-	HRESULT Add_Timer(const wstring& strTimerTag, bool bStart);
-	HRESULT Get_DeltaTime(const wstring& strTimerTag, float& fDeltaTime);
+	HRESULT Add_Timer(const _tchar* pTimerTag);
+	HRESULT	Update_Timer(const _tchar* pTimerTag);
+	_double Get_DeltaTime(const _tchar* pTimerTag);
 
-	HRESULT Pause(const wstring& strTimerTag);
-	HRESULT Resume(const wstring& strTimerTag);
+
+private:
+	CTimer* Find_Timer(const _tchar* pTimerTag);
 
 
 public:
@@ -35,8 +36,8 @@ public:
 
 
 private:
-	typedef unordered_map<wstring, CTimer*> TIMERS;
-	TIMERS* m_pTimers = nullptr;
+	typedef unordered_map<const _tchar*, CTimer*> TIMERS;
+	TIMERS m_Timers;
 };
 
 END

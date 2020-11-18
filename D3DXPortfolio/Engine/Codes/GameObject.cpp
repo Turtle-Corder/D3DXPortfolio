@@ -10,18 +10,19 @@ CGameObject::CGameObject(LPDIRECT3DDEVICE9 pDevice)
 	Safe_AddRef(m_pDevice);
 }
 
-CGameObject::CGameObject(const CGameObject & rOther)
-	: m_pDevice(rOther.m_pDevice)
+CGameObject::CGameObject(const CGameObject & rhs)
+	: m_pDevice(rhs.m_pDevice)
 {
 	Safe_AddRef(m_pDevice);
 }
 
 void CGameObject::Free()
 {
-	for (auto& rPair : m_Components)
-		Safe_Release(rPair.second);
-
-	m_Components.clear();
+	for (_uint iCnt = 0; iCnt < ID_END; ++iCnt)
+	{
+		for_each(m_Components[iCnt].begin(), m_Components[iCnt].end(), CDeleteMap());
+		m_Components[iCnt].clear();
+	}
 
 	Safe_Release(m_pDevice);
 }

@@ -3,14 +3,13 @@
 #define __BASE_H__
 
 #include "Engine_Include.h"
-#include "Log.h"
 
 BEGIN(Engine)
 
 class ENGINE_DLL CBase abstract
 {
 protected:
-	CBase(void);
+	explicit CBase(void);
 	virtual ~CBase(void) = default;
 
 
@@ -29,9 +28,8 @@ protected:
 	//----------------------------------------------------------------------------------------------------
 	// Variables
 	//----------------------------------------------------------------------------------------------------
-protected:
+private:
 	_int	m_iRefCnt	= 0;
-	_bool	m_bIsClone	= false;
 };
 
 END

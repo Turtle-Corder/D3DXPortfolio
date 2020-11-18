@@ -5,7 +5,7 @@ IMPLEMENT_SINGLETON(CFrame_Manager)
 
 CFrame_Manager::CFrame_Manager()
 	: m_dSecondPerFrame(0.0), m_dDeltaTime(0.0), m_dElapseTime(0.0)
-	, m_iFPS(0), m_szFPS(L""), m_dSecElapseTime(0.0)
+	, m_iFPS(0), m_szFPS(_T("")), m_dSecElapseTime(0.0)
 {
 }
 
@@ -69,7 +69,7 @@ void CFrame_Manager::Render_FrameManager()
 	++m_iFPS;
 	if (m_dSecElapseTime > 1.0)
 	{
-		StringCchPrintf(m_szFPS, _countof(m_szFPS), L"FPS:%d", m_iFPS);
+		StringCchPrintf(m_szFPS, _countof(m_szFPS), _T("FPS:%d"), m_iFPS);
 		m_dSecElapseTime -= 1.0;
 		m_iFPS = 0;
 

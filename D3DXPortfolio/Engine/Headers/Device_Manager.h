@@ -17,19 +17,12 @@ private:
 
 
 public:
-	enum DISPLAY_MODE
-	{
-		DISPLAY_FULL,
-		DISPLAY_WINDOW
-	};
-
-
-public:
 	LPDIRECT3DDEVICE9	Get_Device()	const;
-	LPD3DXFONT			Get_Font()		const;
-	LPD3DXSPRITE		Get_Sprite()	const;
 
-	HRESULT Setup_GraphicDevice(HWND hWnd, _uint iWinCX, _uint iWinCY, DISPLAY_MODE eDisplayMode);
+	HRESULT Setup_GraphicDevice(HWND hWnd, _uint iWinCX, _uint iWinCY, WINMODE eDisplayMode);
+
+	void Render_Begin(D3DXCOLOR Color);
+	void Render_End();
 
 	virtual void Free() override;
 	
@@ -43,9 +36,6 @@ public:
 private:
 	LPDIRECT3D9			m_pSDK = nullptr;
 	LPDIRECT3DDEVICE9	m_pDevice = nullptr;
-
-	LPD3DXSPRITE		m_pSprite = nullptr;
-	LPD3DXFONT			m_pFont = nullptr;
 };
 
 END

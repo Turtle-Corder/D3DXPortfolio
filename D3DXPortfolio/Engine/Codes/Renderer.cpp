@@ -59,6 +59,8 @@ HRESULT CRenderer::Render_Renderer()
 
 	m_pDevice->EndScene();
 	m_pDevice->Present(nullptr, nullptr, m_hWnd, nullptr);
+
+	return S_OK;
 }
 
 HRESULT CRenderer::Render_Priority()
@@ -192,7 +194,6 @@ CRenderer * CRenderer::Create(LPDIRECT3DDEVICE9 pDevice, LPD3DXSPRITE pSprite, L
 	CRenderer* pInstance = new CRenderer(pDevice, pSprite, pFont, hWnd);
 	if (FAILED(pInstance->Setup_Renderer()))
 	{
-		_LOG(LEVEL_SYSTEM, _T("Failed To Create CRenderer! \n"));
 		Safe_Release(pInstance);
 	}
 

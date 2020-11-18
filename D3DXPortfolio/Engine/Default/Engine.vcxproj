@@ -71,27 +71,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\Bin</OutDir>
+    <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;../Headers;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\Bin</OutDir>
+    <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;../Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\Bin</OutDir>
+    <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;../Headers;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\Bin</OutDir>
+    <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;../Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -99,7 +99,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;__ENGINE_EXPORTS__</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__ENGINE_EXPORTS__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../Headers;../Codes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -114,9 +114,10 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Custom</Optimization>
+      <PreprocessorDefinitions>__ENGINE_EXPORTS__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +133,7 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;__ENGINE_EXPORTS__</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__ENGINE_EXPORTS__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../Headers;../Codes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -149,11 +150,13 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Custom</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>__ENGINE_EXPORTS__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -167,14 +170,15 @@
     <ClInclude Include="..\Headers\Base.h" />
     <ClInclude Include="..\Headers\Component.h" />
     <ClInclude Include="..\Headers\Device_Manager.h" />
-    <ClInclude Include="..\Headers\Engine_Define.h" />
+    <ClInclude Include="..\Headers\Engine_Enum.h" />
+    <ClInclude Include="..\Headers\Engine_Macro.h" />
     <ClInclude Include="..\Headers\Engine_Function.h" />
     <ClInclude Include="..\Headers\Engine_Include.h" />
     <ClInclude Include="..\Headers\Engine_Struct.h" />
     <ClInclude Include="..\Headers\Engine_Typedef.h" />
+    <ClInclude Include="..\Headers\Frame.h" />
     <ClInclude Include="..\Headers\Frame_Manager.h" />
     <ClInclude Include="..\Headers\GameObject.h" />
-    <ClInclude Include="..\Headers\Log.h" />
     <ClInclude Include="..\Headers\Management.h" />
     <ClInclude Include="..\Headers\Renderer.h" />
     <ClInclude Include="..\Headers\Timer.h" />
@@ -184,9 +188,9 @@
     <ClCompile Include="..\Codes\Base.cpp" />
     <ClCompile Include="..\Codes\Component.cpp" />
     <ClCompile Include="..\Codes\Device_Manager.cpp" />
+    <ClCompile Include="..\Codes\Frame.cpp" />
     <ClCompile Include="..\Codes\Frame_Manager.cpp" />
     <ClCompile Include="..\Codes\GameObject.cpp" />
-    <ClCompile Include="..\Codes\Log.cpp" />
     <ClCompile Include="..\Codes\Management.cpp" />
     <ClCompile Include="..\Codes\Renderer.cpp" />
     <ClCompile Include="..\Codes\Timer.cpp" />

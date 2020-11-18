@@ -11,7 +11,6 @@ CComponent::CComponent(LPDIRECT3DDEVICE9 pDevice)
 CComponent::CComponent(const CComponent & rOther)
 	: m_pDevice(rOther.m_pDevice)
 {
-	m_bIsClone = true;
 	Safe_Release(m_pDevice);
 }
 

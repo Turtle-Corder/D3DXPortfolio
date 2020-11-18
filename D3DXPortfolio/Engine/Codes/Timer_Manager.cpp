@@ -10,108 +10,61 @@ CTimer_Manager::CTimer_Manager()
 
 
 
-CTimer_Manager::~CTimer_Manager()
-{
-}
-
-
-
 HRESULT CTimer_Manager::Setup_TimerManager()
 {
-	m_pTimers = new TIMERS;
-
 	return S_OK;
 }
 
 
 
-_int CTimer_Manager::Update_TimeManager()
+HRESULT CTimer_Manager::Add_Timer(const _tchar * pTimerTag)
 {
-	for (auto& rPair : *m_pTimers)
-	{
-		if (FAILED(rPair.second->Update_Timer()))
-			RETURNCODE::RETCODE_ERR;
-	}
-
-	return RETURNCODE::RETCODE_NONE;
-}
-
-
-
-HRESULT CTimer_Manager::Add_Timer(const wstring & strTimerTag, bool bStart)
-{
-	auto iter_find = m_pTimers->find(strTimerTag);
-	if (iter_find != m_pTimers->end())
-	{
-		_LOG(LEVEL_SYSTEM, _T("Already Register Timer! \n"));
+	CTimer* pInstance = Find_Timer(pTimerTag);
+	if (nullptr != pInstance)
 		return E_FAIL;
-	}
 
-	CTimer* pTimer = nullptr;
-	pTimer = CTimer::Create();
-	if (nullptr == pTimer)
-	{
-		_LOG(LEVEL_SYSTEM, _T("Failed to Crate Timer! \n"));
-		return E_FAIL;
-	}
+	pInstance = CTimer::Create();
+	NULL_CHECK_RETURN(pInstance, E_FAIL);
 
-	if (!bStart)	pTimer->Pause();
-	m_pTimers->emplace(strTimerTag, pTimer);
-
+	m_Timers.emplace(pTimerTag, pInstance);
 	return S_OK;
 }
 
 
 
-HRESULT CTimer_Manager::Get_DeltaTime(const wstring & strTimerTag, float & fDeltaTime)
+HRESULT CTimer_Manager::Update_Timer(const _tchar * pTimerTag)
 {
-	auto iter_find = m_pTimers->find(strTimerTag);
-	if (m_pTimers->end() == iter_find)
-	{
-		_LOG(LEVEL_SYSTEM, _T("Cant Found Timer in Get DeltaTime! \n"));
-		return E_FAIL;
-	}
+	CTimer* pInstance = Find_Timer(pTimerTag);
+	NULL_CHECK(pInstance);
 
-	fDeltaTime = iter_find->second->Get_DeltaTime();
-	return S_OK;
+	return pInstance->Update_Timer();
 }
 
 
 
-HRESULT CTimer_Manager::Pause(const wstring & strTimerTag)
+_double CTimer_Manager::Get_DeltaTime(const _tchar * pTimerTag)
 {
-	auto iter_find = m_pTimers->find(strTimerTag);
-	if (m_pTimers->end() == iter_find)
-	{
-		_LOG(LEVEL_SYSTEM, _T("Cant Found Timer in Pause! \n"));
-		return E_FAIL;
-	}
+	CTimer* pInstance = Find_Timer(pTimerTag);
+	NULL_CHECK_RETURN(pInstance, 0.0);
 
-	iter_find->second->Pause();
-	return S_OK;
+	return pInstance->Get_DeltaTime();
 }
 
 
 
-HRESULT CTimer_Manager::Resume(const wstring & strTimerTag)
+CTimer * CTimer_Manager::Find_Timer(const _tchar * pTimerTag)
 {
-	auto iter_find = m_pTimers->find(strTimerTag);
-	if (m_pTimers->end() == iter_find)
-	{
-		_LOG(LEVEL_SYSTEM, _T("Cant Found Timer in Resume! \n"));
-		return E_FAIL;
-	}
+	auto iter = find_if(m_Timers.begin(), m_Timers.end(), CTagFinder(pTimerTag));
+	if (iter == m_Timers.end())
+		return nullptr;
 
-	iter_find->second->Resume();
-	return S_OK;
+	return iter->second;
 }
 
 
 
 void CTimer_Manager::Free()
 {
-	for (auto& rPair : *m_pTimers)
-		Safe_Delete(rPair.second);
-
-	Safe_Delete(m_pTimers);
+	for_each(m_Timers.begin(), m_Timers.end(), CDeleteMap());
+	m_Timers.clear();
 }

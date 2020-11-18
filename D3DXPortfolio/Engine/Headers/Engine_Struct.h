@@ -28,10 +28,11 @@ const _uint VTX_CLOLOR_FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX0;
 typedef struct tagVertexTexture
 {
 	_vec3	vPosition;
+	_vec3	vNormal;
 	_vec2	vUV;
 } VTX_TEXTURE;
 
-const _uint VTX_TEXTURE_FVF = D3DFVF_XYZ | D3DFVF_TEX1;
+const _uint VTX_TEXTURE_FVF = D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
 
 
 //--------------------------------------------------

@@ -13,9 +13,6 @@
     <Filter Include="01.System\01.Device_Manager">
       <UniqueIdentifier>{e5dfa7a0-95e0-4cc9-9801-99ad4191838b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="00.Log">
-      <UniqueIdentifier>{05259b74-a051-437d-96d1-b5aec4e50f2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="99.Headers">
       <UniqueIdentifier>{25fe7b18-2f97-428c-b0f0-d571d7c5d288}</UniqueIdentifier>
     </Filter>
@@ -55,6 +52,9 @@
     <Filter Include="02.Utillity\01.Frame\99.Manager">
       <UniqueIdentifier>{d29ed835-1807-451b-9890-70cae8b96831}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Utillity\01.Frame\00.Frame">
+      <UniqueIdentifier>{86eb5c88-59e7-4fbc-a9a7-24fde25d0363}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Headers\Device_Manager.h">
@@ -74,12 +74,6 @@
     </ClInclude>
     <ClInclude Include="..\Headers\Engine_Typedef.h">
       <Filter>99.Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Headers\Engine_Define.h">
-      <Filter>99.Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Headers\Log.h">
-      <Filter>00.Log</Filter>
     </ClInclude>
     <ClInclude Include="..\Headers\Management.h">
       <Filter>02.Utillity\00.Management</Filter>
@@ -102,16 +96,19 @@
     <ClInclude Include="..\Headers\Frame_Manager.h">
       <Filter>02.Utillity\01.Frame\99.Manager</Filter>
     </ClInclude>
+    <ClInclude Include="..\Headers\Engine_Macro.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Engine_Enum.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Frame.h">
+      <Filter>02.Utillity\01.Frame\00.Frame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Codes\Device_Manager.cpp">
       <Filter>01.System\01.Device_Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Codes\Base.cpp">
-      <Filter>98.Base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Codes\Log.cpp">
-      <Filter>00.Log</Filter>
     </ClCompile>
     <ClCompile Include="..\Codes\Management.cpp">
       <Filter>02.Utillity\00.Management</Filter>
@@ -133,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="..\Codes\Frame_Manager.cpp">
       <Filter>02.Utillity\01.Frame\99.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Base.cpp">
+      <Filter>98.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Frame.cpp">
+      <Filter>02.Utillity\01.Frame\00.Frame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

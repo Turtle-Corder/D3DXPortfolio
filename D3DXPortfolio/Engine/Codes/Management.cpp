@@ -30,7 +30,6 @@ _uint CManagement::Release_Engine()
 	_int iRefCnt = 0;
 	if (iRefCnt = CManagement::Get_Instance()->Destroy_Instance())
 	{
-		_LOG(LEVEL_SYSTEM, _T("Failed To Destroy CManagement"));
 		return iRefCnt;
 	}
 
@@ -106,26 +105,6 @@ LPDIRECT3DDEVICE9 CManagement::Get_Device() const
 		return nullptr;
 
 	return m_pDevice_Manager->Get_Device();
-}
-
-
-
-LPD3DXSPRITE CManagement::Get_Sprite() const
-{
-	if (nullptr == m_pDevice_Manager)
-		return nullptr;
-
-	return m_pDevice_Manager->Get_Sprite();
-}
-
-
-
-LPD3DXFONT CManagement::Get_Font() const
-{
-	if (nullptr == m_pDevice_Manager)
-		return nullptr;
-
-	return m_pDevice_Manager->Get_Font();
 }
 
 
@@ -227,4 +206,9 @@ HRESULT CManagement::Add_RendererList(CRenderer::enRENDER_TYPE eType, CGameObjec
 		return E_FAIL;
 
 	return m_pRenderer->Add_RendererList(eType, pObject);
+}
+
+CComponent * CManagement::Clone_Component(_int _iSceneID, const wstring & _strPrototypeTag, void * _pArg)
+{
+	return nullptr;
 }

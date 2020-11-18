@@ -10,16 +10,13 @@ class CTimer final : public CBase
 {
 private:
 	explicit CTimer();
-	~CTimer() = default;
+	virtual ~CTimer() = default;
 
 
 public:
 	virtual HRESULT Setup_Timer();
 	virtual HRESULT Update_Timer();
-	_float Get_DeltaTime();
-
-	void Pause();
-	void Resume();
+	_double Get_DeltaTime();
 
 
 public:
@@ -31,12 +28,12 @@ public:
 
 
 protected:
-	_bool			m_bPause;
+	LARGE_INTEGER	m_FrameTime;
+	LARGE_INTEGER	m_FixTime;
+	LARGE_INTEGER	m_LastTime;
 	LARGE_INTEGER	m_CpuTick;
-	LARGE_INTEGER	m_PreTime;
-	LARGE_INTEGER	m_CurTime;
 
-	_float			m_fDeltaTime;
+	_double			m_dDeltaTime = 0.0;
 
 };
 

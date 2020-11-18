@@ -11,7 +11,7 @@ class ENGINE_DLL CGameObject abstract : public CBase
 {
 protected:
 	explicit CGameObject(LPDIRECT3DDEVICE9 pDevice);
-	explicit CGameObject(const CGameObject& rOther);
+	explicit CGameObject(const CGameObject& rhs);
 	virtual ~CGameObject() = default;
 
 	
@@ -54,8 +54,8 @@ public:
 
 
 protected:
-	typedef unordered_map<wstring, CComponent*> COMPONENTS;
-	COMPONENTS m_Components;
+	typedef unordered_map<const _tchar*, CComponent*> COMPONENTS;
+	COMPONENTS m_Components[ID_END];
 
 	LPDIRECT3DDEVICE9 m_pDevice = nullptr;
 	_bool m_bActive = false;

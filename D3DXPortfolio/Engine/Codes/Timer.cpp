@@ -11,11 +11,9 @@ CTimer::CTimer()
 HRESULT CTimer::Setup_Timer()
 {
 	QueryPerformanceFrequency(&m_CpuTick);
-	QueryPerformanceCounter(&m_PreTime);
-	QueryPerformanceCounter(&m_CurTime);
-
-	m_fDeltaTime = 0.f;
-	m_bPause = false;
+	QueryPerformanceCounter(&m_FrameTime);
+	QueryPerformanceCounter(&m_FixTime);
+	QueryPerformanceCounter(&m_LastTime);
 
 	return S_OK;
 }
@@ -24,38 +22,26 @@ HRESULT CTimer::Setup_Timer()
 
 HRESULT CTimer::Update_Timer()
 {
-	if (m_bPause)
-		return S_OK;
+	QueryPerformanceCounter(&m_FrameTime);
 
-	QueryPerformanceCounter(&m_CurTime);
+	if (m_FrameTime.QuadPart - m_FixTime.QuadPart >= m_CpuTick.QuadPart)
+	{
+		QueryPerformanceFrequency(&m_CpuTick);
+		m_FixTime = m_FrameTime;
+	}
 
-	m_fDeltaTime = (_float)(m_CurTime.QuadPart - m_PreTime.QuadPart) / m_CpuTick.QuadPart;
-	m_PreTime = m_CurTime;
+	m_dDeltaTime = _double(m_FrameTime.QuadPart - m_LastTime.QuadPart) / _double(m_CpuTick.QuadPart);
+
+	m_LastTime = m_FrameTime;
 
 	return S_OK;
 }
 
 
 
-_float CTimer::Get_DeltaTime()
+_double CTimer::Get_DeltaTime()
 {
-	return m_fDeltaTime;
-}
-
-
-
-void CTimer::Pause()
-{
-	m_bPause = true;
-	m_fDeltaTime = 0.f;
-}
-
-
-
-void CTimer::Resume()
-{
-	m_bPause = false;
-	QueryPerformanceCounter(&m_PreTime);
+	return m_dDeltaTime;
 }
 
 
@@ -66,8 +52,7 @@ CTimer * CTimer::Create()
 	pInstance = new CTimer;
 	if (FAILED(pInstance->Setup_Timer()))
 	{
-		_LOG(LEVEL_SYSTEM, _T("Failed To Create Timer \n"));
-		Safe_Delete(pInstance);
+		Safe_Release(pInstance);
 	}
 
 	return pInstance;

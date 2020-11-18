@@ -80,4 +80,74 @@ _int Safe_Release(T& ptr)
 
 
 
+//----------------------------------------------------------------------------------------------------
+// Compare 함수객체
+//----------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------
+// 문자열 비교
+//--------------------------------------------------
+class CTagFinder
+{
+public:
+	explicit CTagFinder(const _tchar* pTag) : m_pTargetTag(pTag) { }
+	~CTagFinder() { }
+
+public:
+	template<typename T>
+	bool operator()(const T& pair)
+	{
+		if (0 == lstrcmpW(m_pTargetTag, pair.first))
+			return true;
+
+		return false;
+	}
+
+private:
+	const _tchar*		m_pTargetTag = nullptr;
+};
+
+
+//--------------------------------------------------
+// 컨테이너 해제용
+//--------------------------------------------------
+class CDeleteObj
+{
+public:
+	explicit CDeleteObj(void) {}
+	~CDeleteObj(void) {}
+
+public:
+	template <typename T>
+	void operator () (T& pInstance)
+	{
+		_ulong dwRefCnt = 0;
+
+		dwRefCnt = pInstance->Release();
+		if (0 == dwRefCnt)
+			pInstance = nullptr;
+	}
+};
+
+class CDeleteMap
+{
+public:
+	explicit CDeleteMap(void) {}
+	~CDeleteMap(void) {}
+public: 	
+	template <typename T>
+	void operator () (T& Pair)
+	{
+		_ulong dwRefCnt = 0;
+
+		dwRefCnt = Pair.second->Release();
+		if (0 == dwRefCnt)
+			Pair.second = NULL;
+	}
+};
+
+
+
+
+
 #endif // !__ENGINE_FUNCTION_H__
