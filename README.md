@@ -1,6 +1,7 @@
 # D3DXTool
 
 //--------------------------------------------------
+
 Terrain Tool
  Render Option
   Solid, WireFrame, Axis pivot
@@ -19,6 +20,7 @@ Terrain Tool
 
 
 //--------------------------------------------------
+
 Mesh Tool
  Render Option
   Solid, WireFrame 
@@ -39,3 +41,4 @@ Mesh Tool
  
 
 //-------------------------------------------------- 
+
